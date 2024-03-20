@@ -7,6 +7,7 @@ import style from './Header.module.css'
 function Header() {
   return (
     <Navbar expand='lg' className='bg-body-tertiary'>
+      heello
       <Container>
         <Navbar.Brand href='#home'>
           <img width={130} src='https://wikici.com/Upload/chu-ky/chu-ky-ten-linh-livingston-sanserif-otf.jpeg' alt='' />
