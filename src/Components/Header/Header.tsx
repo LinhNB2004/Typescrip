@@ -3,7 +3,7 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import { NavLink } from 'react-router-dom'
-
+import style from './Header.module.css'
 function Header() {
   return (
     <Navbar expand='lg' className='bg-body-tertiary'>
@@ -14,16 +14,16 @@ function Header() {
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='me-auto'>
-            <NavLink to='/' className='nav-link'>
+            <NavLink to='/' className={style.navLink}>
               Trang chủ
             </NavLink>
-            <NavLink to='/productlist' className='nav-link'>
+            <NavLink to='/productlist'  className={style.navLink}>
               Sản phẩm
             </NavLink>
-            <NavLink to='/login' className='nav-link'>
+            <NavLink to='/login' className={style.navLink}>
               Đăng nhập
             </NavLink>
-            <NavLink to='/register' className='nav-link'>
+            <NavLink to='/register' className={style.navLink}>
               Đăng kí
             </NavLink>
             <NavDropdown title='Bộ sưu tập' id='basic-nav-dropdown'>
