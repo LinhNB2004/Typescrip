@@ -9,29 +9,113 @@ html {
   font-weight: 400;
   font-family: 'Inter', sans-serif;
 }
+/*  Banner */
 .banner {
   width: 100%;
   height: 400px;
 }
+/* Nổi bật */
+.noibat {
+  height: 200px;
+}
+
+.noibat h6 {
+  padding-top: 30%;
+  color: white;
+  padding-left: 20px;
+}
+.noibat a {
+  text-decoration: none;
+  color: rgb(237, 90, 31);
+  padding-left: 20px;
+}
+a:hover {
+  text-decoration: none;
+  color: orangered;
+}
+.noibat1 {
+  background-image: url('https://i.pinimg.com/564x/df/d6/b3/dfd6b3ca3e45b7e3ee42639212f43f18.jpg');
+  background-size: cover; /* Ảnh sẽ vừa khung và không bị biến dạng */
+  background-repeat: no-repeat; /* Ngăn chặn ảnh lặp lại */
+}
+.noibat2 {
+  background-image: url('https://i.pinimg.com/564x/fe/f9/b6/fef9b6f9a96eb9718250a39953cb658b.jpg');
+  background-size: cover; /* Ảnh sẽ vừa khung và không bị biến dạng */
+  background-repeat: no-repeat; /* Ngăn chặn ảnh lặp lại */
+}
+.noibat3 {
+  background-image: url('https://i.pinimg.com/564x/a6/9a/5e/a69a5e495b2c5d0afa003e932281cfdc.jpg');
+  background-size: cover; /* Ảnh sẽ vừa khung và không bị biến dạng */
+  background-repeat: no-repeat; /* Ngăn chặn ảnh lặp lại */
+}
+/* Sale */
+.sale {
+  height: 300px;
+}
+.sale1 {
+  background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20230817/pngtree-pink-cosmetics-on-a-pink-background-with-different-shades-of-creams-image_13021897.jpg');
+  background-size: cover; /* Ảnh sẽ vừa khung và không bị biến dạng */
+  background-repeat: no-repeat; /* Ngăn chặn ảnh lặp lại */
+}
+.sale2 {
+  background-image: url('https://img.pikbest.com/ai/illus_our/20230428/d8c8c91335c0df084594cb9d348b7118.jpg!w700wp');
+  background-size: cover; /* Ảnh sẽ vừa khung và không bị biến dạng */
+  background-repeat: no-repeat; /* Ngăn chặn ảnh lặp lại */
+}
+.content {
+  padding-top: 15%;
+  padding-left: 5%;
+}
+.content p {
+  color: rgb(156, 6, 6);
+  font-size: 10px;
+  font-weight: bold;
+}
+.content b {
+  color: rgb(156, 6, 6);
+}
+.content h6 {
+  line-height: 35px;
+  font-size: 25px;
+  color: aliceblue;
+}
+/* ProductList */
 .product {
   padding-top: 6px;
   border: 1px solid rgb(243, 243, 243);
-  width: 220px;
+  width: 200px;
   border-radius: 7px;
 }
 .row {
-  gap: 15px;
+  gap: 50px;
 }
 .thongtin {
-  padding-top: 5px;
+  padding-top: 30px;
 }
 .thongtin p {
   font-size: small;
 }
 .thongtin span {
   color: red;
+  font-weight: bold;
 }
 .dssp {
   text-align: center;
   margin-bottom: 40px;
+}
+.dssp button {
+  width: 20%;
+  border-radius: 5px;
+  border: solid orangered;
+}
+
+/* Footer */
+.footer {
+  height: 390px;
+  background-color: rgb(72, 68, 68);
+  color: white;
+  padding: 40px;
+}
+.chan {
+  text-align: center;
 }

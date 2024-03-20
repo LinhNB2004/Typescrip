@@ -8,25 +8,29 @@ function Header() {
   return (
     <Navbar expand='lg' className='bg-body-tertiary'>
       <Container>
-        <Navbar.Brand href='#home'>HL</Navbar.Brand>
+        <Navbar.Brand href='#home'>
+          <img width={130} src='https://wikici.com/Upload/chu-ky/chu-ky-ten-linh-livingston-sanserif-otf.jpeg' alt='' />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='me-auto'>
             <NavLink to='/' className='nav-link'>
-              Home
+              Trang chủ
+            </NavLink>
+            <NavLink to='/productlist' className='nav-link'>
+              Sản phẩm
             </NavLink>
             <NavLink to='/login' className='nav-link'>
-              Login
+              Đăng nhập
             </NavLink>
             <NavLink to='/register' className='nav-link'>
-              Register
+              Đăng kí
             </NavLink>
             <NavDropdown title='Bộ sưu tập' id='basic-nav-dropdown'>
-              <NavDropdown.Item href='#action/3.1'>Nước hoa Pháp</NavDropdown.Item>
-              <NavDropdown.Item href='#action/3.2'>Nước hoa Dior</NavDropdown.Item>
-              <NavDropdown.Item href='#action/3.3'>Nước hoa Chanel</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href='#action/3.4'>Separated link</NavDropdown.Item>
+              <NavDropdown.Item href='#action/3.1'>Dụng cụ make</NavDropdown.Item>
+              <NavDropdown.Item href='#action/3.2'>Sản phẩm chăm sóc da</NavDropdown.Item>
+              <NavDropdown.Item href='#action/3.3'>Phấn phủ </NavDropdown.Item>
+              <NavDropdown.Item href='#action/3.3'>Son môi </NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

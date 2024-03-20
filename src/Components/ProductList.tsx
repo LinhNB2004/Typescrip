@@ -47,10 +47,10 @@ const ProductList = () => {
         <Row className='row'>
           {products.map((product) => (
             <Col className='product'>
-              <Image width={250} height={200} src={product.thumbnail} rounded />
+              <Image width={225} height={200} src={product.thumbnail} rounded />
               <div className='thongtin'>
+                <span>{product.price}.000.VNĐ</span>
                 <h5>{product.title}</h5>
-                <span>{product.price}$</span>
                 <p>{product.description}</p>
               </div>
             </Col>

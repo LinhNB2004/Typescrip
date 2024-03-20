@@ -7,6 +7,7 @@ import ProductDetail from './pages/ProductDetail'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import NotFound from './pages/NotFound'
+import ProductList from './Components/ProductList'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/productlist' element={<ProductList />} />
         <Route path='/shop/:id' element={<ProductDetail />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
