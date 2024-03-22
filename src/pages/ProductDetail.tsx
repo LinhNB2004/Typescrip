@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
 import { TProduct } from '@/interfaces/TProduct'
+import BasicExample from '@/Components/Basic'
 
 type Props = {}
 
@@ -27,16 +28,16 @@ const ProductDetail = (props: Props) => {
         {product && (
           <div className='ctsp'>
             <div className='anh'>
-              <Image src={product.thumbnail} style={{ width: 500, height: 500, borderRadius: '50px 0 0 50px' }} />
+              <Image src={product.thumbnail} style={{ width: 500, height: 530, borderRadius: '50px 0 0 50px' }} />
             </div>
             <div className='nd'>
               <h3>{product.title}</h3>
+              <button className='bt'></button> <br />
               <span>
                 <b> {product.price}.000.VNĐ</b>
               </span>
               <br />
               <p>{product.description}</p>
-
               <p>
                 Hàng chính hãng 100% Gói hàng đảm bảo Giao tận nhà trên toàn quốc Giao hàng thu tiền tận nhà Kiểm hàng
                 trước khi thanh toán. <br />
@@ -53,6 +54,7 @@ const ProductDetail = (props: Props) => {
             </div>
           </div>
         )}
+        <BasicExample />
       </Container>
     </div>
   )
