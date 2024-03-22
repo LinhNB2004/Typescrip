@@ -1,8 +1,9 @@
 .active {
   color: violet;
 }
+
 .navLink {
-  color: blue;
+  color: black;
+  text-decoration: none;
+  margin-left: 20px;
 }
-
-

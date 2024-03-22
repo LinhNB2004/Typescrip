@@ -7,9 +7,8 @@ import style from './Header.module.css'
 function Header() {
   return (
     <Navbar expand='lg' className='bg-body-tertiary'>
-      heello
       <Container>
-        <Navbar.Brand href='#home'>
+        <Navbar.Brand>
           <img width={130} src='https://wikici.com/Upload/chu-ky/chu-ky-ten-linh-livingston-sanserif-otf.jpeg' alt='' />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -18,7 +17,7 @@ function Header() {
             <NavLink to='/' className={style.navLink}>
               Trang chủ
             </NavLink>
-            <NavLink to='/productlist'  className={style.navLink}>
+            <NavLink to='/productlist' className={style.navLink}>
               Sản phẩm
             </NavLink>
             <NavLink to='/login' className={style.navLink}>
@@ -27,12 +26,12 @@ function Header() {
             <NavLink to='/register' className={style.navLink}>
               Đăng kí
             </NavLink>
-            <NavDropdown title='Bộ sưu tập' id='basic-nav-dropdown'>
+            {/* <NavDropdown title='Bộ sưu tập' id='basic-nav-dropdown'>
               <NavDropdown.Item href='#action/3.1'>Dụng cụ make</NavDropdown.Item>
               <NavDropdown.Item href='#action/3.2'>Sản phẩm chăm sóc da</NavDropdown.Item>
               <NavDropdown.Item href='#action/3.3'>Phấn phủ </NavDropdown.Item>
               <NavDropdown.Item href='#action/3.3'>Son môi </NavDropdown.Item>
-            </NavDropdown>
+            </NavDropdown> */}
           </Nav>
         </Navbar.Collapse>
       </Container>

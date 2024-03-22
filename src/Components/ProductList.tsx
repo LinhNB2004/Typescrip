@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
+import { Link } from 'react-router-dom'
 
 const ProductList = () => {
   // ! Dump component va smart component
@@ -44,13 +45,17 @@ const ProductList = () => {
   return (
     <div>
       <Container>
+        <h3 className='dssp'>
+          Sản Phẩm <br /> <button></button>{' '}
+        </h3>
+
         <Row className='row'>
           {products.map((product) => (
             <Col className='product'>
-              <Image width={225} height={200} src={product.thumbnail} rounded />
+              <Image width={240} height={200} src={product.thumbnail} rounded />
               <div className='thongtin'>
-                <span>{product.price}.000.VNĐ</span>
-                <h5>{product.title}</h5>
+                <span>{product.price}.000.VNĐ</span> <br />
+                <Link to={`/shop/${product.id}`}>{product.title}</Link>
                 <p>{product.description}</p>
               </div>
             </Col>

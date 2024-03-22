@@ -13,22 +13,26 @@ function Banner() {
           alt=''
         />{' '}
         <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          {/* <h3>First slide label</h3>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={500}>
-        <img className='banner' src='https://new.edu.vn/cach-dung-nuoc-hoa-hong-hieu-qua/imager_7269.jpg' alt='' />
+        <img
+          className='banner'
+          src='https://theme.hstatic.net/1000312827/1001156103/14/coll_img_default.jpg?v=529'
+          alt=''
+        />
         <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          {/* <h3>Second slide label</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img className='banner' src='https://hangnhatgiatot.com/upload/MenuImg/03031503_banner_kemtrangda.jpg' alt='' />
         <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          {/* <h3>Third slide label</h3>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> */}
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

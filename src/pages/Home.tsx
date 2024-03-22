@@ -1,4 +1,5 @@
 import Banner from '@/Components/Banner'
+import Chuyenmuc from '@/Components/Chuyenmuc'
 import Footer from '@/Components/Footer'
 import Noibat from '@/Components/Noibat'
 import ProductList from '@/Components/ProductList'
@@ -10,9 +11,7 @@ const Home = (props: Props) => {
     <div>
       <Banner />
       <Noibat />
-      <h2 className='dssp'>
-        Sản Phẩm <br /> <button></button>{' '}
-      </h2>
+      <Chuyenmuc />
 
       <ProductList />
       <Sale />
