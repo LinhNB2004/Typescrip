@@ -6,7 +6,6 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
 import { Link } from 'react-router-dom'
-import BasicExample from './Basic'
 
 const ProductList = () => {
   // ! Dump component va smart component
@@ -53,7 +52,10 @@ const ProductList = () => {
         <Row className='row'>
           {products.map((product) => (
             <Col className='product'>
-              <Image width={240} height={200} src={product.thumbnail} rounded />
+              <Link to={`/shop/${product.id}`}>
+                <Image width={240} height={200} src={product.thumbnail} rounded />
+              </Link>
+
               <div className='thongtin'>
                 <span>{product.price}.000.VNĐ</span> <br />
                 <Link to={`/shop/${product.id}`}>{product.title}</Link>
@@ -62,7 +64,6 @@ const ProductList = () => {
             </Col>
           ))}
         </Row>
-        <BasicExample />
       </Container>
     </div>
   )

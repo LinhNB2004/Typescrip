@@ -7,7 +7,7 @@ const Sale = () => {
       <br></br>
       <Row className='footer'>
         <Col>
-          <div className='nd'>
+          <div className='ft'>
             <h4>CHÚNG TÔI</h4>
             <p>Giới thiệu</p>
             <p>Tổng công ty</p>
@@ -16,7 +16,7 @@ const Sale = () => {
           </div>
         </Col>
         <Col>
-          <div className='nd'>
+          <div className='ft'>
             <h4>HỖ TRỢ KHÁCH HÀNG</h4>
             <p>Hướng dẫn mua sản phẩm</p>
             <p>Bảo mật thông tin</p>
@@ -25,8 +25,8 @@ const Sale = () => {
           </div>
         </Col>
         <Col>
-          <div className='nd'>
-            <h4>Mỹ Phẩm Thùy Linh</h4>
+          <div className='ft'>
+            <h4>MỸ PHẨM THÙY LINH</h4>
             <p>Hãy để lại email của bạn để nhận được những thông tin, ưu đãi từ Mỹ Phẩm Thùy Linh</p>
             <p>Email: Myphamthuylinh@gmail.com.vn</p>
             <b>Hotline: 18007200</b>

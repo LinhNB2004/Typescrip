@@ -41,6 +41,8 @@ const ProductDetail = (props: Props) => {
               <p>
                 Hàng chính hãng 100% Gói hàng đảm bảo Giao tận nhà trên toàn quốc Giao hàng thu tiền tận nhà Kiểm hàng
                 trước khi thanh toán. <br />
+                <b>Xếp hạng:</b> {product.rating}
+                <br />
                 <b>Vận chuyển:</b> Miễn phí <br />
                 <b>Tình trạng:</b> Còn hàng <br />
                 <b>Khối lượng:</b> 8g <br />
