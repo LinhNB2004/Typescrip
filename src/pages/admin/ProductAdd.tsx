@@ -13,6 +13,7 @@ const ProductAdd = ({ onAdd }: Props) => {
   } = useForm<TProduct>()
   const onSubmit: SubmitHandler<TProduct> = (data) => {
     console.log(data)
+    onAdd(data)
   }
   return (
     <div className='container'>

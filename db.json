@@ -18,7 +18,6 @@
         "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
       ]
     },
-
     {
       "id": 9,
       "title": "Má Hồng Nars Blush ",
@@ -141,7 +140,9 @@
       "brand": "Samsung",
       "category": "smartphones",
       "thumbnail": "https://i.pinimg.com/564x/2c/77/08/2c7708b1504aebc0fde4954467a6915e.jpg",
-      "images": ["https://i.pinimg.com/564x/2c/77/08/2c7708b1504aebc0fde4954467a6915e.jpg"]
+      "images": [
+        "https://i.pinimg.com/564x/2c/77/08/2c7708b1504aebc0fde4954467a6915e.jpg"
+      ]
     },
     {
       "id": 4,
@@ -215,6 +216,24 @@
         "https://cdn.dummyjson.com/product-images/8/4.jpg",
         "https://cdn.dummyjson.com/product-images/8/thumbnail.jpg"
       ]
+    },
+    {
+      "title": "rr",
+      "price": "577",
+      "description": "jj",
+      "id": 13
+    },
+    {
+      "title": "Bảng phấn mắt",
+      "price": "500",
+      "description": "blinh blinh",
+      "id": 14
+    },
+    {
+      "title": "Phấn phủ",
+      "price": "500",
+      "description": "blinh blinh",
+      "id": 15
     }
   ],
   "carts": [

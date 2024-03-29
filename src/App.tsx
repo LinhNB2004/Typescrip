@@ -1,6 +1,6 @@
 import './App.css'
 import Home from './pages/Home'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import NotFound from './pages/NotFound'
 import Register from './pages/Register'
 import Login from './pages/Login'
@@ -12,24 +12,26 @@ import { TProduct } from './interfaces/TProduct'
 import instance from './apis'
 import Header from './Components/Header/Header'
 import Footer from './Components/Footer'
+import { createProduct, getProducts } from './apis/product'
 
 function App() {
   const [products, setProducts] = useState<TProduct[]>([])
+  const navigate = useNavigate()
   useEffect(() => {
     // Cach 2:
-    const getProducts = async () => {
-      try {
-        const { data } = await instance.get('/products')
-        console.log(data)
-        setProducts(data)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    getProducts()
+    ;(async () => {
+      const data = await getProducts()
+      setProducts(data)
+    })()
   }, [])
+  // console.log(products)
   const handleAdd = (product: TProduct) => {
-    console.log(product)
+    ;(async () => {
+      const data = await createProduct(product)
+      // setProducts((prev) => [...prev, data])
+      setProducts([...products, data])
+      navigate('/admin')
+    })()
   }
   return (
     <>
