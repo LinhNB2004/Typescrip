@@ -232,7 +232,7 @@ html {
 .dangnhap h2 {
   text-align: center;
   padding-top: 7%;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   color: white;
 }
 
@@ -241,7 +241,7 @@ html {
   width: 400px;
   height: 410px;
   border: 1px solid rgb(232, 232, 232);
-  border-radius: 10px;
+  /* border-radius: 10px; */
   padding: 20px;
 }
 
@@ -256,7 +256,7 @@ html {
   padding: 10px;
   font-size: 10px;
   border: 1px solid white;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   background: transparent;
   outline: none;
   color: white;
@@ -280,4 +280,24 @@ html {
   color: aliceblue;
   font-size: 14px;
   border: 1px solid rgb(239, 59, 89);
+}
+
+/* ADMIN */
+
+table {
+  text-align: center;
+}
+/* ADD PRODUCT */
+form {
+  width: 600px;
+  max-width: 100%;
+  padding: 32px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+  margin: 0 auto;
+  margin-top: 3%;
+}
+.form-group {
+  margin-bottom: 24px;
 }

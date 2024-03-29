@@ -1,7 +1,7 @@
 import React from 'react'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-const Sale = () => {
+const Footer = () => {
   return (
     <div>
       <br></br>
@@ -46,4 +46,4 @@ const Sale = () => {
   )
 }
 
-export default Sale
+export default Footer

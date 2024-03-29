@@ -26,6 +26,9 @@ function Header() {
             <NavLink to='/register' className={style.navLink}>
               Đăng kí
             </NavLink>
+            <NavLink to='/admin' className={style.navLink}>
+              Admin Pages
+            </NavLink>
             {/* <NavDropdown title='Bộ sưu tập' id='basic-nav-dropdown'>
               <NavDropdown.Item href='#action/3.1'>Dụng cụ make</NavDropdown.Item>
               <NavDropdown.Item href='#action/3.2'>Sản phẩm chăm sóc da</NavDropdown.Item>
