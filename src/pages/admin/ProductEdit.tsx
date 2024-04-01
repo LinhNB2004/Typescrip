@@ -2,18 +2,23 @@ import { TProduct } from '@/interfaces/TProduct'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { joiResolver } from '@hookform/resolvers/joi'
 import Joi from 'joi'
+import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { getProduct } from '@/apis/product'
 
 type Props = {
-  onAdd: (product: TProduct) => void
+  onEdit: (product: TProduct) => void
 }
+
 const schemaProduct = Joi.object({
   title: Joi.string().required().min(3).max(255),
   price: Joi.number().required().min(0),
-  thumbnail: Joi.string().allow(''),
-  description: Joi.string().allow('') // được phép bỏ trống
+  description: Joi.string().allow('')
 })
 
-const ProductAdd = ({ onAdd }: Props) => {
+const ProductEdit = ({ onEdit }: Props) => {
+  const { id } = useParams()
+  const [product, setProduct] = useState<TProduct | null>(null)
   const {
     register,
     handleSubmit,
@@ -21,11 +26,16 @@ const ProductAdd = ({ onAdd }: Props) => {
   } = useForm<TProduct>({
     resolver: joiResolver(schemaProduct)
   })
-
-  const onSubmit: SubmitHandler<TProduct> = (data) => {
-    // console.log(data)
-    onAdd(data)
+  const onSubmit = (product: TProduct) => {
+    onEdit({ ...product, id })
   }
+
+  useEffect(() => {
+    ;(async () => {
+      const data = await getProduct(`/${id}`)
+      setProduct(data)
+    })()
+  }, [])
   return (
     <div className='container'>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -37,8 +47,9 @@ const ProductAdd = ({ onAdd }: Props) => {
             id='title'
             placeholder='Title'
             {...register('title', { required: true, minLength: 3, maxLength: 255 })}
+            defaultValue={product?.title}
           />
-          {errors.title && <span className='text-danger'>{errors.title.message}</span>}{' '}
+          {errors.title && <span className='text-danger'>{errors.title.message}</span>}
         </div>
         <div className='form-group'>
           <label htmlFor='price'>Price</label>
@@ -48,12 +59,9 @@ const ProductAdd = ({ onAdd }: Props) => {
             id='price'
             placeholder='Price'
             {...register('price', { required: true, min: 0 })}
+            defaultValue={product?.price as number}
           />
-          {errors.price && <span className='text-danger'>{errors.price.message}</span>}{' '}
-        </div>
-        <div className='form-group'>
-          <label htmlFor='img'>Image URL</label>
-          <input type='text' className='form-control' id='img' placeholder='Image URL' {...register('thumbnail')} />
+          {errors.price && <span className='text-danger'>{errors.price.message}</span>}
         </div>
         <div className='form-group'>
           <label htmlFor='description'>Description</label>
@@ -63,6 +71,7 @@ const ProductAdd = ({ onAdd }: Props) => {
             id='description'
             placeholder='Description'
             {...register('description')}
+            defaultValue={product?.description}
           />
         </div>
         <button type='submit' className='btn btn-primary w-100'>
@@ -73,4 +82,4 @@ const ProductAdd = ({ onAdd }: Props) => {
   )
 }
 
-export default ProductAdd
+export default ProductEdit
