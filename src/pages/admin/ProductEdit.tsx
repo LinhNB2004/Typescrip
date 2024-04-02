@@ -1,5 +1,5 @@
 import { TProduct } from '@/interfaces/TProduct'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { joiResolver } from '@hookform/resolvers/joi'
 import Joi from 'joi'
 import { useParams } from 'react-router-dom'
@@ -13,6 +13,7 @@ type Props = {
 const schemaProduct = Joi.object({
   title: Joi.string().required().min(3).max(255),
   price: Joi.number().required().min(0),
+  thumbnail: Joi.string(),
   description: Joi.string().allow('')
 })
 
@@ -62,6 +63,17 @@ const ProductEdit = ({ onEdit }: Props) => {
             defaultValue={product?.price as number}
           />
           {errors.price && <span className='text-danger'>{errors.price.message}</span>}
+        </div>
+        <div className='form-group'>
+          <label htmlFor='img'>Image URL</label>
+          <input
+            type='text'
+            className='form-control'
+            id='thumbnail'
+            placeholder='Image URL'
+            {...register('thumbnail')}
+            defaultValue={product?.thumbnail}
+          />
         </div>
         <div className='form-group'>
           <label htmlFor='description'>Description</label>

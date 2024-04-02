@@ -9,7 +9,7 @@ type Props = {
 const schemaProduct = Joi.object({
   title: Joi.string().required().min(3).max(255),
   price: Joi.number().required().min(0),
-  thumbnail: Joi.string().allow(''),
+  thumbnail: Joi.string(),
   description: Joi.string().allow('') // được phép bỏ trống
 })
 
@@ -28,7 +28,7 @@ const ProductAdd = ({ onAdd }: Props) => {
   }
   return (
     <div className='container'>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form className='addproduct' onSubmit={handleSubmit(onSubmit)}>
         <div className='form-group'>
           <label htmlFor='title'>Title</label>
           <input
