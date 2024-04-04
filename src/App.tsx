@@ -8,6 +8,7 @@ import Login from './pages/Login'
 import { useEffect, useState } from 'react'
 import { TProduct } from './interfaces/TProduct'
 import instance from './services'
+import NotFound from './pages/NotFound'
 
 function App() {
   const navigate = useNavigate()
@@ -74,6 +75,7 @@ function App() {
         <Route path='/edit/:id' element={<Editproduct onSubmit={handleEditProduct} />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/*' element={<NotFound />} />
       </Routes>
     </>
   )
