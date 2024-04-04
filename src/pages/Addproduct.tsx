@@ -1,19 +1,19 @@
-import { TProduct } from '@/interfaces/TProduct'
+import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { joiResolver } from '@hookform/resolvers/joi'
 import Joi from 'joi'
+import { TProduct } from '@/interfaces/TProduct'
 
 type Props = {
-  onAdd: (product: TProduct) => void
+  onSubmit: (product: TProduct) => void
 }
 const schemaProduct = Joi.object({
-  title: Joi.string().required().min(3).max(255),
+  title: Joi.string().required().min(3).max(100),
   price: Joi.number().required().min(0),
   thumbnail: Joi.string(),
-  description: Joi.string().allow('') // được phép bỏ trống
+  description: Joi.string().required()
 })
-
-const ProductAdd = ({ onAdd }: Props) => {
+const Addproduct = ({ onSubmit }: Props) => {
   const {
     register,
     handleSubmit,
@@ -22,13 +22,10 @@ const ProductAdd = ({ onAdd }: Props) => {
     resolver: joiResolver(schemaProduct)
   })
 
-  const onSubmit: SubmitHandler<TProduct> = (data) => {
-    // console.log(data)
-    onAdd(data)
-  }
   return (
-    <div className='container'>
-      <form className='addproduct' onSubmit={handleSubmit(onSubmit)}>
+    <div>
+      <form action='' onSubmit={handleSubmit(onSubmit)}>
+        <h1>AddProduct</h1>
         <div className='form-group'>
           <label htmlFor='title'>Title</label>
           <input
@@ -36,10 +33,11 @@ const ProductAdd = ({ onAdd }: Props) => {
             className='form-control'
             id='title'
             placeholder='Title'
-            {...register('title', { required: true, minLength: 3, maxLength: 255 })}
+            {...register('title', { required: true, minLength: 3, maxLength: 100 })}
           />
-          {errors.title && <span className='text-danger'>{errors.title.message}</span>}{' '}
+          {errors.title && <span className='text-danger'>{errors.title.message}</span>}
         </div>
+
         <div className='form-group'>
           <label htmlFor='price'>Price</label>
           <input
@@ -52,17 +50,13 @@ const ProductAdd = ({ onAdd }: Props) => {
           {errors.price && <span className='text-danger'>{errors.price.message}</span>}{' '}
         </div>
         <div className='form-group'>
-          <label htmlFor='img'>Image URL</label>
-          <input type='text' className='form-control' id='img' placeholder='Image URL' {...register('thumbnail')} />
-        </div>
-        <div className='form-group'>
           <label htmlFor='description'>Description</label>
           <input
             type='text'
             className='form-control'
             id='description'
             placeholder='Description'
-            {...register('description')}
+            {...register('description', { required: true })}
           />
         </div>
         <button type='submit' className='btn btn-primary w-100'>
@@ -73,4 +67,4 @@ const ProductAdd = ({ onAdd }: Props) => {
   )
 }
 
-export default ProductAdd
+export default Addproduct

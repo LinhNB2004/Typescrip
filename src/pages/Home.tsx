@@ -1,47 +1,45 @@
-import Banner from '@/Components/Banner'
-import BasicExample from '@/Components/Basic'
-import Chuyenmuc from '@/Components/Chuyenmuc'
-import Footer from '@/Components/Footer'
-import Noibat from '@/Components/Noibat'
-import ProductList from '@/Components/ProductList'
-import Sale from '@/Components/Sale'
 import { TProduct } from '@/interfaces/TProduct'
-import { Col, Container, Image, Row } from 'react-bootstrap'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 type Props = {
   products: TProduct[]
+  onDel: (id: number) => void
 }
-const Home = ({ products }: Props) => {
+const Home = ({ products, onDel }: Props) => {
+  //   console.log(products)
+
   return (
     <div>
-      <Banner />
-      <Noibat />
-      <Chuyenmuc />
-      <Container>
-        <h3 className='dssp'>
-          Sản Phẩm <br /> <button></button>{' '}
-        </h3>
-
-        <Row className='row'>
-          {products.map((product) => (
-            <Col className='product'>
-              <Link to={`/shop/${product.id}`}>
-                <Image width={240} height={200} src={product.thumbnail} rounded />
-              </Link>
-
-              <div className='thongtin'>
-                <span>{product.price}.000.VNĐ</span> <br />
-                <Link to={`/shop/${product.id}`}>{product.title}</Link>
-                <p>{product.description}</p>
-              </div>
-            </Col>
+      <table className='table table-bordered table-striped'>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map((item) => (
+            <tr key={item.id}>
+              <td>{item.id}</td>
+              <td>{item.title}</td>
+              <td>{item.price}</td>
+              <td>{item.description}</td>
+              <td>
+                <button onClick={() => onDel(Number(item.id))} className='btn btn-danger '>
+                  Delete
+                </button>
+                <Link className='btn btn-warning  ' to={`/edit/${item.id}`}>
+                  Update
+                </Link>
+              </td>
+            </tr>
           ))}
-        </Row>
-      </Container>
-
-      <Sale />
-      <BasicExample />
+        </tbody>
+      </table>
     </div>
   )
 }

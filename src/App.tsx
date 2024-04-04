@@ -1,78 +1,80 @@
+import { NavLink, Route, Routes, useNavigate } from 'react-router-dom'
 import './App.css'
 import Home from './pages/Home'
-import { Routes, Route, useNavigate, useParams } from 'react-router-dom'
-import NotFound from './pages/NotFound'
+import Addproduct from './pages/Addproduct'
+import Editproduct from './pages/Editproduct'
 import Register from './pages/Register'
 import Login from './pages/Login'
-import ProductDetail from './pages/ProductDetail'
-import Dashboard from './pages/admin/Dashboard'
-import ProductAdd from './pages/admin/ProductAdd'
 import { useEffect, useState } from 'react'
 import { TProduct } from './interfaces/TProduct'
-import Header from './Components/Header/Header'
-import Footer from './Components/Footer'
-import { createProduct, getProducts, removeProduct, updateProduct } from './apis/product'
-import ProductEdit from './pages/admin/ProductEdit'
+import instance from './services'
 
 function App() {
-  const [products, setProducts] = useState<TProduct[]>([])
   const navigate = useNavigate()
+  // HIỂN THỊ
+  const [products, setProducts] = useState<TProduct[]>([])
   useEffect(() => {
-    // Cach 2:
     ;(async () => {
-      const data = await getProducts()
+      const { data } = await instance.get('/products')
       setProducts(data)
     })()
   }, [])
-
-  // console.log(products)
-  const handleAdd = (product: TProduct) => {
-    ;(async () => {
-      const data = await createProduct(product) // Sản phẩm mới thêm
-      // setProducts((prev) => [...prev, data])
-      setProducts([...products, data]) // ([...sp cũ], sp mới)
-      navigate('/admin')
-    })()
-  }
-  const handleEdit = (product: TProduct) => {
-    ;(async () => {
-      const updatePro = await updateProduct(product) // Sản phẩm mới thêm
-      // setProducts((prev) => [...prev, data])
-      setProducts(products.map((item) => (item.id === updatePro.id ? updatePro : item)))
-      navigate('/admin')
-    })()
-  }
-  const handleDelete = (id: number | undefined) => {
+  // XÓA
+  const handleDeleteProduct = (id: number) => {
     // console.log(id)
     ;(async () => {
-      const isConfirm = window.confirm('Are you sure?')
+      const isConfirm = confirm('Are you sure?')
       if (isConfirm) {
-        await removeProduct(`${id}`)
-        setProducts(products.filter((i) => i.id !== id))
+        await instance.delete(`/products/${id}`)
+        setProducts(products.filter((item) => item.id !== id && item))
       }
+    })()
+  }
+
+  // ADDPRODUCT
+  const handleAddProduct = (product: TProduct) => {
+    // console.log(product)
+    ;(async () => {
+      const { data } = await instance.post(`/products`, product)
+      setProducts([...products, data])
+      navigate('/')
+    })()
+  }
+
+  // EDITPRODUCT
+  const handleEditProduct = (product: TProduct) => {
+    // console.log(product)
+    ;(async () => {
+      const { data } = await instance.put(`/products/${product.id}`, product)
+      setProducts(products.map((item) => (item.id === data.id ? data : item)))
+      navigate('/')
     })()
   }
   return (
     <>
-      <Header />
+      <header>
+        <ul>
+          <li>
+            <NavLink to='/'>Home</NavLink>
+          </li>
+          <li>
+            <NavLink to='/add'>Add new product</NavLink>
+          </li>
+          <li>
+            <NavLink to='/register'>Register</NavLink>
+          </li>
+          <li>
+            <NavLink to='login'>Login</NavLink>
+          </li>
+        </ul>
+      </header>
       <Routes>
-        {/* client */}
-        <Route path='/'>
-          <Route index element={<Home products={products} />} />
-          <Route path='/shop/:id' element={<ProductDetail />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
-        </Route>
-        {/* admin */}
-        <Route path='/admin'>
-          <Route index element={<Dashboard products={products} onDel={handleDelete} />} />
-          <Route path='/admin/add' element={<ProductAdd onAdd={handleAdd} />} />
-          <Route path='/admin/edit/:id' element={<ProductEdit onEdit={handleEdit} />} />
-        </Route>
-        {/* not found */}
-        <Route path='*' element={<NotFound />} />
+        <Route index element={<Home onDel={handleDeleteProduct} products={products} />} />
+        <Route path='/add' element={<Addproduct onSubmit={handleAddProduct} />} />
+        <Route path='/edit/:id' element={<Editproduct onSubmit={handleEditProduct} />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/login' element={<Login />} />
       </Routes>
-      <Footer />
     </>
   )
 }

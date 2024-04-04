@@ -1,25 +1,31 @@
-import { TProduct } from '@/interfaces/TProduct'
-import { useForm } from 'react-hook-form'
+import React, { useEffect, useState } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { joiResolver } from '@hookform/resolvers/joi'
 import Joi from 'joi'
+import { TProduct } from '@/interfaces/TProduct'
 import { useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import { getProduct } from '@/apis/product'
+import instance from '@/services'
+import { title } from 'process'
 
 type Props = {
-  onEdit: (product: TProduct) => void
+  onSubmit: (product: TProduct) => void
 }
-
 const schemaProduct = Joi.object({
-  title: Joi.string().required().min(3).max(255),
+  title: Joi.string().required().min(3).max(100),
   price: Joi.number().required().min(0),
   thumbnail: Joi.string(),
-  description: Joi.string().allow('')
+  description: Joi.string().required()
 })
-
-const ProductEdit = ({ onEdit }: Props) => {
-  const { id } = useParams()
+const Editproduct = ({ onSubmit }: Props) => {
   const [product, setProduct] = useState<TProduct | null>(null)
+  const { id } = useParams()
+  useEffect(() => {
+    ;(async () => {
+      const { data } = await instance.get(`/products/${id}`)
+      setProduct(data)
+    })()
+  }, [])
+
   const {
     register,
     handleSubmit,
@@ -27,19 +33,13 @@ const ProductEdit = ({ onEdit }: Props) => {
   } = useForm<TProduct>({
     resolver: joiResolver(schemaProduct)
   })
-  const onSubmit = (product: TProduct) => {
-    onEdit({ ...product, id })
+  const onEdit = (product: TProduct) => {
+    onSubmit({ ...product, id })
   }
-
-  useEffect(() => {
-    ;(async () => {
-      const data = await getProduct(`/${id}`)
-      setProduct(data)
-    })()
-  }, [])
   return (
-    <div className='container'>
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <div>
+      <form action='' onSubmit={handleSubmit(onEdit)}>
+        <h1>AddProduct</h1>
         <div className='form-group'>
           <label htmlFor='title'>Title</label>
           <input
@@ -47,11 +47,12 @@ const ProductEdit = ({ onEdit }: Props) => {
             className='form-control'
             id='title'
             placeholder='Title'
-            {...register('title', { required: true, minLength: 3, maxLength: 255 })}
+            {...register('title', { required: true, minLength: 3, maxLength: 100 })}
             defaultValue={product?.title}
           />
           {errors.title && <span className='text-danger'>{errors.title.message}</span>}
         </div>
+
         <div className='form-group'>
           <label htmlFor='price'>Price</label>
           <input
@@ -60,20 +61,9 @@ const ProductEdit = ({ onEdit }: Props) => {
             id='price'
             placeholder='Price'
             {...register('price', { required: true, min: 0 })}
-            defaultValue={product?.price as number}
+            defaultValue={product?.price}
           />
-          {errors.price && <span className='text-danger'>{errors.price.message}</span>}
-        </div>
-        <div className='form-group'>
-          <label htmlFor='img'>Image URL</label>
-          <input
-            type='text'
-            className='form-control'
-            id='thumbnail'
-            placeholder='Image URL'
-            {...register('thumbnail')}
-            defaultValue={product?.thumbnail}
-          />
+          {errors.price && <span className='text-danger'>{errors.price.message}</span>}{' '}
         </div>
         <div className='form-group'>
           <label htmlFor='description'>Description</label>
@@ -82,7 +72,7 @@ const ProductEdit = ({ onEdit }: Props) => {
             className='form-control'
             id='description'
             placeholder='Description'
-            {...register('description')}
+            {...register('description', { required: true })}
             defaultValue={product?.description}
           />
         </div>
@@ -94,4 +84,4 @@ const ProductEdit = ({ onEdit }: Props) => {
   )
 }
 
-export default ProductEdit
+export default Editproduct
